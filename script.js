@@ -1,26 +1,17 @@
-"use strict"; //только в начале,помогает ликвидировать ошибки в коде
+/* Задание на урок:
 
-// alert(1);
 
-// const result = confirm("Are you here");
-// console.log(result);
+2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
+отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
+возвращаем пользователя к вопросам опять
 
-// const answer = prompt("Вам есть 18?", "18");
-// console.log(answer);
+3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
+"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
+"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
 
-// const answers = [];
+4) Потренироваться и переписать цикл еще двумя способами*/
 
-// answers[0]= prompt("What's your name?", "");
-// answers[1]= prompt("What's your second name?", "");
-// answers[2]= prompt("What's your age?", "");
-
-// document.write(answers);  //устаревшая тема для тестов
-
-// console.log(null);
-
-// const numberOfFilms=[];
-// numberOfFilms[0]= prompt("how many film your watch?", "");
-// console.log(numberOfFilms[0]);
+'use strict';
 
 const numberOfFilms = +prompt("How many films have you watched?", "");
 console.log(numberOfFilms);
@@ -31,22 +22,51 @@ let personalMovieDB = {
     genres: {},
     privat: false
      }
-     const a =prompt("What's your last film?", ""),
-           b=  prompt("What's your rating?", "");
-           personalMovieDB.movies[a]=a;
-           personalMovieDB.movies[b]=b;
-           console.log(personalMovieDB);
+    //  const a =prompt("What's your last film?", ""),
+    //        b=  prompt("What's your rating?", ""),
+    //        c=  prompt("What's your last film?", ""),
+    //        d=  prompt("What's your rating?", "");
+    //        personalMovieDB.movies[a]=b;
+    //        personalMovieDB.movies[c]=d;
+    //        console.log(personalMovieDB);
+    //  for( let i=1;i<2;i++){
+    //     const a =prompt("What's your last film?", ""),
+    //          b=  prompt("What's your rating?", "");
+    //          if ( a!=null && b!=null && a!='' && b!=''&& a.length<50 ) {
+    //             personalMovieDB.movies[a]=b;
+    //             console.log("done");
+    //          } else{
+    //             console.log("error");
+    //             i--;
+    //          }
+    //  }
+    let i =1;
+    while(i<2){
+        i++;
+        const a =prompt("What's your last film?", ""),
+             b=  prompt("What's your rating?", "");
+             if ( a!=null && b!=null && a!='' && b!=''&& a.length<50 ) {
+                personalMovieDB.movies[a]=b;
+                console.log("done");
+             } else{
+                console.log("error");
+                i--;
+             }
+     }
+     if(personalMovieDB.count<10){
+        console.log("Просмотрено довольно мало фильмов");
+     }
+     else if(personalMovieDB.count>10&&personalMovieDB.count<30){
+        console.log("Вы классический зритель");
+     }
+     else if(personalMovieDB.count>30){
+        console.log("Вы киноман");
+     }
+     else{
+        console.log("Error");
+     }
      
-// const numberOfFilms2 = [];
-// numberOfFilms2[0] = prompt("What's your last film?", "");
-// numberOfFilms2[1] = prompt("What's your rating?", "");
 
-// let personalMovieDB = {
-//     count:(numberOfFilms), // Convert the input to a number using parseInt
-//     movies: [numberOfFilms2[0],numberOfFilms2[1]],
-//     actors: {},
-//     genres: {},
-//     privat: false
-// };
 
-// console.log(personalMovieDB.movies);
+console.log(personalMovieDB);
+// Код возьмите из предыдущего домашнего задания
